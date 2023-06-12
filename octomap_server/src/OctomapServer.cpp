@@ -345,6 +345,9 @@ void OctomapServer::insertCloudCallback(const sensor_msgs::PointCloud2::ConstPtr
     pc_nonground.header = pc.header;
   }
 
+  // clear the old tree:
+  m_octree->clear();
+
 
   insertScan(sensorToWorldTf.getOrigin(), pc_ground, pc_nonground);
 
