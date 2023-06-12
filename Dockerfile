@@ -1,9 +1,7 @@
-FROM carlostojal/cuda-ros:noetic-cuda12.1.1-ubuntu20.04
+FROM ros:noetic-ros-base
 
 # environment variables
 ENV DEBIAN_FRONTEND=noninteractive
-ENV LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
-ENV PATH=/usr/local/cuda/bin:$PATH
 
 # install dependencies
 RUN apt update
@@ -18,7 +16,6 @@ RUN apt install -y \
     wget
 
 # init rosdep
-RUN rosdep init
 RUN rosdep update
 
 # copy the ros package and build it
